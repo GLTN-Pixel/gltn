@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1f2126">
+  <meta name="description" content="">
+  <title>Wiki</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" id="skip-link" href="#content"></a>
+
+  <header class="hero">
+    <div class="hero__media" aria-hidden="true">
+      <div class="hero__track" id="hero-track"></div>
+    </div>
+    <svg class="hero__blood-splatter" viewBox="0 0 200 200" aria-hidden="true">
+      <g fill="var(--blood)" opacity="0.6">
+        <circle cx="40" cy="50" r="6"/>
+        <circle cx="55" cy="45" r="3"/>
+        <circle cx="30" cy="65" r="4"/>
+        <ellipse cx="48" cy="58" rx="8" ry="3" transform="rotate(-25 48 58)"/>
+        <circle cx="70" cy="80" r="2"/>
+        <circle cx="20" cy="90" r="2"/>
+      </g>
+    </svg>
+    <div class="bg-blood bg-blood--hero" id="bg-blood-hero" aria-hidden="true"></div>
+    <svg class="hero__blood-splatter hero__blood-splatter--lower" viewBox="0 0 200 200" aria-hidden="true">
+      <g fill="var(--blood)" opacity="0.55">
+        <circle cx="40" cy="50" r="6"/>
+        <circle cx="55" cy="45" r="3"/>
+        <circle cx="30" cy="65" r="4"/>
+        <ellipse cx="48" cy="58" rx="8" ry="3" transform="rotate(-25 48 58)"/>
+        <circle cx="70" cy="80" r="2"/>
+        <circle cx="20" cy="90" r="2"/>
+      </g>
+    </svg>
+    <div class="hero__inner">
+      <p class="hero__eyebrow" id="hero-eyebrow"></p>
+      <h1 class="hero__title" id="site-title"></h1>
+      <p class="hero__subtitle" id="site-subtitle"></p>
+    </div>
+    <a class="hero__workshop" id="workshop-link" href="#" target="_blank" rel="noreferrer"></a>
+  </header>
+
+  <nav class="filter-bar" id="filter-bar">
+    <div class="filter-bar__dropdowns">
+      <button class="filter-dropdown-btn" id="type-dropdown-btn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="type-dropdown-panel">
+        <span class="filter-dropdown-btn__label" id="type-dropdown-label"></span>
+        <span class="filter-dropdown-btn__arrow" aria-hidden="true">&#9662;</span>
+      </button>
+      <button class="filter-dropdown-btn" id="form-dropdown-btn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="form-dropdown-panel">
+        <span class="filter-dropdown-btn__label" id="form-dropdown-label"></span>
+        <span class="filter-dropdown-btn__arrow" aria-hidden="true">&#9662;</span>
+      </button>
+    </div>
+
+    <label class="filter-bar__search" id="search-label" for="search-input">
+      <span class="sr-only" id="search-label-text"></span>
+      <span class="search-icon" aria-hidden="true">&#128269;</span>
+      <input id="search-input" type="search" class="search-input" autocomplete="off" aria-describedby="results-status">
+      <button class="search-clear-btn" id="search-clear-btn" type="button" hidden>&times;</button>
+    </label>
+
+    <button class="filter-bar__clear" id="clear-filters-btn" type="button" hidden></button>
+
+    <div class="filter-dropdown-panel" id="type-dropdown-panel" role="listbox" hidden></div>
+    <div class="filter-dropdown-panel filter-dropdown-panel--forms" id="form-dropdown-panel" role="listbox" hidden></div>
+    <div class="filter-sheet-overlay" id="filter-sheet-overlay" hidden></div>
+  </nav>
+
+  <div class="filter-status-bar" aria-live="polite">
+    <p class="filter-status-bar__summary" id="results-status" role="status"></p>
+    <p class="filter-status-bar__editor" id="editor-status" hidden></p>
+  </div>
+
+  <main id="content">
+    <div id="sections-root"></div>
+    <div class="bg-blood bg-blood--section-1" id="bg-blood-section-1" aria-hidden="true"></div>
+    <div class="bg-blood bg-blood--section-2" id="bg-blood-section-2" aria-hidden="true"></div>
+
+    <section class="info-section" aria-labelledby="info-heading">
+      <div class="info-section__divider section-divider" aria-hidden="true"></div>
+      <div class="section-heading">
+        <h2 class="info-section__heading" id="info-heading"></h2>
+        <p id="info-subtitle"></p>
+      </div>
+      <div class="info-grid" id="info-cards-root"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <section class="footer__col" id="footer-site-col">
+        <h2 class="footer__title" id="footer-site-title"></h2>
+        <p id="copyright-text"></p>
+      </section>
+      <section class="footer__col" id="footer-links-col">
+        <h2 class="footer__title" id="footer-links-title"></h2>
+        <p><span id="feedback-label"></span><span id="feedback-qq"></span></p>
+        <p><a id="footer-workshop" href="#" target="_blank" rel="noreferrer"></a></p>
+      </section>
+      <section class="footer__col footer__donation" id="footer-donation-col">
+        <h2 class="footer__title" id="footer-donation-title"></h2>
+        <div class="qr-frame">
+          <img id="donation-qr" src="" alt="">
+          <span class="qr-frame__fallback" id="donation-qr-fallback"></span>
+        </div>
+      </section>
+    </div>
+    <div class="bg-blood bg-blood--footer" id="bg-blood-footer" aria-hidden="true"></div>
+  </footer>
+
+  <div class="modal" id="modal" hidden>
+    <div class="modal__backdrop" data-close-modal></div>
+    <section class="modal__content" role="dialog" aria-modal="true" aria-labelledby="modal-title" tabindex="-1">
+      <button class="modal__close" id="modal-close-btn" type="button" data-close-modal>×</button>
+      <div class="modal__body" id="modal-body"></div>
+      <p class="modal__cache-tip" id="modal-cache-tip"></p>
+    </section>
+  </div>
+
+  <div class="sr-only" id="live-region" aria-live="polite" aria-atomic="true"></div>
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
