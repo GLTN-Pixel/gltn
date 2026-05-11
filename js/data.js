@@ -78,7 +78,8 @@ const ASSETS = {
     'img/cover1.png',
     'img/cover2.png',
     'img/cover3.png',
-    'img/cover4.png'
+    'img/cover4.png',
+    'img/cover5.png'
   ],
   backgroundBlood: {
     hero: 'img/bg/blood-bg-1.png',
