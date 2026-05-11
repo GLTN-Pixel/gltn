@@ -33,7 +33,7 @@ const SITE = {
   title: '哥布林杀手',
   subtitle: '（副标题占位，等待客户补充正式站点介绍）',
   workshopUrl: 'https://steamcommunity.com/sharedfiles/filedetails/?id=3242898567',
-  feedbackQQ: '（占位）',
+  feedbackQQ: 'QQ群：1078587287',
   copyright: '© 2026 哥布林杀手 Mod 制作组（占位）'
 };
 
@@ -89,7 +89,7 @@ const ASSETS = {
   signs: {
     wrath: 'img/sign/wrath-sign.png'
   },
-  donationQr: 'img/donation-qr.png',
+  donationQr: 'img/don/donation-qr.png',
   textures: {
     armor: 'img/bg/armor-texture.png',
     dividerChain: 'img/bg/divider-chain.png',
