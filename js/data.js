@@ -31,7 +31,7 @@
  */
 const SITE = {
   title: '哥布林杀手',
-  subtitle: '（副标题占位，等待客户补充正式站点介绍）',
+  subtitle: '如果世间真的有IF，那么被称作哥杀的男子能否拥有不同的人生？',
   workshopUrl: 'https://steamcommunity.com/sharedfiles/filedetails/?id=3242898567',
   feedbackQQ: 'QQ群：1078587287',
   copyright: '© 2026 哥布林杀手 Mod 制作组（占位）'
@@ -460,8 +460,8 @@ const ENTRIES = [
     tags: ['变身', '魅惑'],
     aliases: ['色欲形态'],
     searchTerms: ['lust'],
-    portrait: 'img/characters/char-lust-portrait.png',
-    splash: 'img/characters/char-lust-splash.jpg',
+    portrait: 'img/characters/seyu/char-lust-portrait.png',
+    splash: 'img/characters/seyu/char-lust-splash.jpg',
     quote: '（占位）',
     short: '（占位）',
     detail: '<p>（占位）</p>',
