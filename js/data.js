@@ -387,7 +387,10 @@ const ENTRIES = [
     short: '也许并不是喜好杀戮，只是不知道自己除此以外还能做什么。',
     detail: '<p>（占位）使用 {{item-dragon-blood}} 可变身为不同形态。</p>',
     baseStats: { health: 150, hunger: 150, sanity: 200 },
-    pros: ['经验丰富的冒险者：面对小生物的时候拥有5点固定减伤（对BOSS不生效）'],
+    pros: ['面对小生物的时候拥有5点固定减伤（对BOSS不生效）',
+    '移动速度受饱食度影响',
+    '搓东西手速快'
+  ],
     cons: ['无法睡觉'],
     abilities: [],
     related: ['item-dragon-blood']
