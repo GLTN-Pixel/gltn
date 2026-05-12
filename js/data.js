@@ -392,7 +392,7 @@ const ENTRIES = [
     '搓东西手速快'
   ],
     cons: ['无法睡觉'],
-    abilities: [ { name: "投掷和拔出", type: "passive", desc: "可以远程投掷指定武器（铁剑和牙签）{{weapon-rookie-sword}}{{item-tooth-pick}}" },
+    abilities: [ { name: "投掷和拔出", type: "passive", desc: "可以远程投掷指定武器（铁剑和牙签）{{weapon-rookie-sword}},{{item-tooth-pick}}" },
     { name: "神明创造的特殊个体", type: "passive", desc: "如果手持武器受到攻击有25%的机会做出一次反击，反击伤害同平A，反击时受击不会扣血" },
     { name: "屹立不倒(红眼)", type: "passive", desc: "当生命值小于10%时，获得15s无敌时间，期间按照自己已损失的生命值提高自己的攻击力（每损失4%生命提高1%攻击力）攻速略有提升(每损失4%生命提高0.02%攻击速度)，如果击杀目标则按照击杀目标最大生命值的1%回复自身生命，CD1天。若无敌时间结束血量仍小于10%，则攻击倍率降低为50%，移动速度降低为50%（直到血量＞10%才可以解除）。" ,}],
     related: ['item-dragon-blood']
@@ -507,7 +507,7 @@ const ENTRIES = [
     searchTerms: ['fang rib', 'wrath weapon'],
     icon: 'img/items/xielongzhilei/weapon-fang-rib.png',
     short: '喝彩！为我对世间万物的憎恶喝彩！',
-    detail: '（占位）攻击距离 2，伤害 68，无耐久。来自 {{char-wrath}}。',
+    detail: '技能：地狱之业火在物品栏时右键立刻消耗40%最大生命值，获得持续4s的力场护盾（此力场护盾效果同铥矿头盔）随后每秒损失6点生命值和20点能量直到生命值达到6后或者能量达到200后不再下降。技能持续期间，每次损失生命对周围单位造成30伤害，且持续期间攻击倍率固定为3.0，且暴击率变为30% 暴击伤害提升15%每次暴击回复20生命。{{char-wrath}}',
     stats: [
       { label: '伤害', value: '68' },
       { label: '距离', value: '2' }
@@ -524,7 +524,7 @@ const ENTRIES = [
     searchTerms: ['fang spine', 'wrath sword'],
     icon: 'img/items/xielongzhiji/weapon-fang-spine.png',
     short: '哀悼！为正在受地狱之火灼烧的我哀悼！',
-    detail: '（占位）',
+    detail: '右键技能技能：如梦一般的泡影（消耗25能量，CD8s）可以像哑铃一样抛物线扔出，在落地点造成34点AOE伤害，同时在落点召唤一枚可造成100 AOE伤害的陨石（没有燃烧效果和击飞物品效果，且对哥杀伤害减半）如果哥杀在陨石范围内，则获得持续4s的力场护盾，此力场护盾效果同铥矿头盔增加15%的攻击力和移动速度，并获得额外36攻击力和吸血（每次攻击回5）持续15s。{{char-wrath}}',
     stats: [
       { label: '伤害', value: '68' }
     ],
@@ -540,7 +540,7 @@ const ENTRIES = [
     searchTerms: ['rookie sword'],
     icon: 'img/items/新手短剑/weapon-rookie-sword.png',
     short: '靠近铁匠解锁配方',
-    detail: '（占位）',
+    detail: '右键投掷，每次消耗武器25%耐久,命中敌人后会插在敌人身上造成25%减速，玩家可以选择将插在敌人身上的武器拔出(右键怪物或者快捷键R)，消耗武器25%耐久造成怪物1%最大生命值的伤害，这部分伤害会以流血形式扣除。',
     stats: [
       { label: '伤害', value: '68' },
       { label: '耐久', value: '150' }
@@ -557,7 +557,7 @@ const ENTRIES = [
     searchTerms: ['toothpick'],
     icon: 'img/items/yaqian/item-tooth-pick.png',
     short: '靠近铁匠解锁配方',
-    detail: '（占位）',
+    detail: '攻击同原版吹箭，命中敌人后会插在敌人身上造成25%减速，玩家可以选择将插在敌人身上的武器拔出(右键怪物或者快捷键R)，消耗武器25%耐久造成怪物1%最大生命值的伤害，这部分伤害会以流血形式扣除。',
     stats: [
       { label: '伤害', value: '42.5' },
       { label: '消耗2木头', value: '生产4个' }
@@ -574,7 +574,7 @@ const ENTRIES = [
     searchTerms: ['rookie sword'],
     icon: 'img/items/xiniufuzi/weapon-shadow-axe.png',
     short: '击杀犀牛获得',
-    detail: '（占位）',
+    detail: '斧子在地上插三天就会消失，击杀远古犀牛获得，无耐久具有多用斧稿功能，且给予3个金锄头可以开启一键3*3功能伤害68，右键消耗（自动检查物品栏）2个噩梦燃料开启特殊功能分身：（持续15S冷却20S）此时攻击距离为2，若在攻击距离1攻击可造成双倍伤害且分身状态下工作具有双倍效率',
     stats: [
       { label: '伤害', value: '68' },
       { label: '耐久', value: '150' }
@@ -684,18 +684,20 @@ const ENTRIES = [
     related: ['summon-mayo']
   },
   {
-    id: 'summon-mayo',
+    id: 'summon-mayonnaise',
     type: 'summon',
     form: 'common',
     name: '蛋黄酱',
-    tags: ['同伴'],
+    tags: ['宠物'],
     aliases: ['mayo'],
-    searchTerms: ['summon mayo'],
-    icon: 'img/items/summon-mayo.png',
-    short: '（占位）通用伙伴。',
+    searchTerms: ['summon mayonnaise'],
+    icon: 'img/items/danhuangjiang/summon-mayonnaise.png',
+    short: '1.召唤：在冰箱中心空出，周围放满8个腐烂物品',
     detail: '（占位）',
     stats: [
-      { label: '生命', value: '600' }
+      { label: '生命', value: '600' },
+      { label: '饥饿度', value: '600' },
+      { label: '饥饿速率', value: '0' },
     ],
     related: ['build-mailbox']
   },
