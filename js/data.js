@@ -554,13 +554,13 @@ const ENTRIES = [
     name: '牙签',
     tags: ['远程', '可投掷','后续制作'],
     aliases: ['牙签'],
-    searchTerms: ['rookie sword'],
+    searchTerms: ['toothpick'],
     icon: 'img/items/新手短剑/item-tooth-pick.png',
     short: '靠近铁匠解锁配方',
     detail: '（占位）',
     stats: [
       { label: '伤害', value: '42.5' },
-      { label: '消耗2个木头', value: '制作4个' }
+      { label: '耐久', value: '150' }
     ],
     related: []
   },
