@@ -574,7 +574,9 @@ const ENTRIES = [
     searchTerms: ['rookie sword'],
     icon: 'img/items/xiniufuzi/weapon-shadow-axe.png',
     short: '击杀犀牛获得',
-    detail: '斧子在地上插三天就会消失，击杀远古犀牛获得，无耐久具有多用斧稿功能，且给予3个金锄头可以开启一键3*3功能伤害68，右键消耗（自动检查物品栏）2个噩梦燃料开启特殊功能分身：（持续15S冷却20S）此时攻击距离为2，若在攻击距离1攻击可造成双倍伤害且分身状态下工作具有双倍效率',
+    detail:'斧子在地上插三天就会消失',
+    '击杀远古犀牛获得，无耐久具有多用斧稿功能，且给予3个金锄头可以开启一键3*3功能':
+    '伤害68，右键消耗（自动检查物品栏）2个噩梦燃料开启特殊功能分身：（持续15S冷却20S）此时攻击距离为2，若在攻击距离1攻击可造成双倍伤害且分身状态下工作具有双倍效率', 
     stats: [
       { label: '伤害', value: '68' },
       { label: '耐久', value: '150' }
@@ -692,8 +694,8 @@ const ENTRIES = [
     aliases: ['mayo'],
     searchTerms: ['summon mayonnaise'],
     icon: 'img/items/danhuangjiang/summon-mayonnaise.png',
-    short: '1.召唤：在冰箱中心空出，周围放满8个腐烂物品',
-    detail: '（占位）',
+    short: '召唤：在冰箱中心空出，周围放满8个腐烂物品',
+    detail: '召唤：在冰箱中心空出，周围放满8个腐烂物品',
     stats: [
       { label: '生命', value: '600' },
       { label: '饥饿度', value: '600' },
