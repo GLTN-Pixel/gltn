@@ -170,7 +170,7 @@ const UI = {
   pendingCharacterTitleFallback: '称号待补充',
   pendingShortFallback: '简介待补充',
   pendingDescriptionFallback: '说明待补充',
-  pendingDetailFallback: '详细说明待补充',
+  pendingDetailFallback: '先把物品栏的背包，给予铁匠，并学习铁匠的蓝图',
   pendingQuoteFallback: '角色台词待补充',
   pendingLoreFallback: '背景说明待补充',
   pendingAbilityNameFallback: '技能名待补充',
@@ -555,11 +555,27 @@ const ENTRIES = [
     tags: ['容器', '贪婪专属'],
     aliases: ['一级钱袋'],
     searchTerms: ['purse'],
-    icon: 'img/items/equip-pursestring-1.png',
-    short: '（占位）',
+    icon: 'img/items/钱袋/equip-pursestring-1.png',
+    short: '这是我年轻时候用过的钱袋',
     detail: '（占位）只可装 {{item-zhi-coin}} 等。',
     stats: [
       { label: '格子', value: '6' }
+    ],
+    related: ['item-zhi-coin']
+  },
+  {
+    id: 'equip-pursestring-1',
+    type: 'equipment',
+    form: 'greed',
+    name: '钱袋（二级）',
+    tags: ['容器', '贪婪专属'],
+    aliases: ['二级钱袋'],
+    searchTerms: ['purse'],
+    icon: 'img/items/钱袋/equip-pursestring-1.png',
+    short: '那时的我小有所成',
+    detail: '（占位）只可装 {{item-zhi-coin}} 等。',
+    stats: [
+      { label: '格子', value: '12' }
     ],
     related: ['item-zhi-coin']
   },
