@@ -392,7 +392,7 @@ const ENTRIES = [
     '搓东西手速快'
   ],
     cons: ['无法睡觉'],
-    abilities: [ { name: "投掷和拔出", type: "passive", desc: "可以远程投掷指定武器（铁剑和牙签）,{{weapon-rookie-sword}}" },
+    abilities: [ { name: "投掷和拔出", type: "passive", desc: "可以远程投掷指定武器（铁剑和牙签）{{weapon-rookie-sword}}" },
     { name: "神明创造的特殊个体", type: "passive", desc: "如果手持武器受到攻击有25%的机会做出一次反击，反击伤害同平A，反击时受击不会扣血" },
     { name: "屹立不倒(红眼)", type: "passive", desc: "当生命值小于10%时，获得15s无敌时间，期间按照自己已损失的生命值提高自己的攻击力（每损失4%生命提高1%攻击力）攻速略有提升(每损失4%生命提高0.02%攻击速度)，如果击杀目标则按照击杀目标最大生命值的1%回复自身生命，CD1天。若无敌时间结束血量仍小于10%，则攻击倍率降低为50%，移动速度降低为50%（直到血量＞10%才可以解除）。" ,}],
     related: ['item-dragon-blood']
@@ -536,10 +536,44 @@ const ENTRIES = [
     form: 'common',
     name: '新手短剑',
     tags: ['近战', '可投掷'],
-    aliases: ['练习剑'],
+    aliases: ['新手短剑','初始短剑','初始剑'],
     searchTerms: ['rookie sword'],
     icon: 'img/items/新手短剑/weapon-rookie-sword.png',
     short: '（占位）靠近铁匠解锁配方。',
+    detail: '（占位）',
+    stats: [
+      { label: '伤害', value: '68' },
+      { label: '耐久', value: '150' }
+    ],
+    related: []
+  },
+  {
+    id: 'item-tooth-pick',
+    type: 'item',
+    form: 'common',
+    name: '牙签',
+    tags: ['远程', '可投掷','后续制作'],
+    aliases: ['牙签'],
+    searchTerms: ['rookie sword'],
+    icon: 'img/items/新手短剑/item-tooth-pick.png',
+    short: '靠近铁匠解锁配方',
+    detail: '（占位）',
+    stats: [
+      { label: '伤害', value: '42.5' },
+      { label: '消耗2个木头', value: '制作4个' }
+    ],
+    related: []
+  },
+  {
+    id: 'weapon-shadow-axe',
+    type: 'weapon',
+    form: 'common',
+    name: '缠绕不详暗影之力的战斧',
+    tags: ['近战', '击杀获得'],
+    aliases: ['犀牛斧子','缠绕不详暗影之力的战斧'],
+    searchTerms: ['rookie sword'],
+    icon: 'img/items/xiniufuzi/weapon-shadow-axe.png',
+    short: '击杀犀牛获得',
     detail: '（占位）',
     stats: [
       { label: '伤害', value: '68' },
@@ -580,14 +614,28 @@ const ENTRIES = [
     related: ['item-zhi-coin']
   },
   {
-    id: 'equip-rookie-bag',
+    id: 'equip-rookie-backpack',
     type: 'equipment',
     form: 'common',
-    name: '皮巴尘的新手背包',
+    name: '皱巴巴的新手背包',
     tags: ['开局自带'],
     aliases: ['新手背包'],
     searchTerms: ['rookie bag'],
-    icon: 'img/items/equip-rookie-bag.png',
+    icon: 'img/items/equip-rookie-backpack.png',
+    short: '（占位）',
+    detail: '（占位）',
+    stats: [],
+    related: []
+  },
+  {
+    id: 'equip-rookie-backpack2',
+    type: 'equipment',
+    form: 'common',
+    name: '精细的猪皮背包',
+    tags: ['后续制作'],
+    aliases: ['猪皮背包'],
+    searchTerms: ['rookie bag'],
+    icon: 'img/items/equip-rookie-backpack2.png',
     short: '（占位）',
     detail: '（占位）',
     stats: [],
@@ -625,7 +673,7 @@ const ENTRIES = [
     id: 'build-mailbox',
     type: 'building',
     form: 'common',
-    name: '信箱',
+    name: '信箱（未上线）',
     tags: ['建筑', '蛋黄酱'],
     aliases: ['邮箱'],
     searchTerms: ['mailbox'],
