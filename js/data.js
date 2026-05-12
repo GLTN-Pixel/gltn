@@ -387,8 +387,8 @@ const ENTRIES = [
     short: '也许并不是喜好杀戮，只是不知道自己除此以外还能做什么。',
     detail: '<p>（占位）使用 {{item-dragon-blood}} 可变身为不同形态。</p>',
     baseStats: { health: 150, hunger: 150, sanity: 200 },
-    pros: ['（占位优势）'],
-    cons: ['（占位劣势）'],
+    pros: ['经验丰富的冒险者：面对小生物的时候拥有5点固定减伤（对BOSS不生效）'],
+    cons: ['无法睡觉'],
     abilities: [],
     related: ['item-dragon-blood']
   },
@@ -500,8 +500,8 @@ const ENTRIES = [
     tags: ['枪', '变身自带'],
     aliases: ['愤怒长枪'],
     searchTerms: ['fang rib', 'wrath weapon'],
-    icon: 'img/items/weapon-fang-rib.png',
-    short: '（占位）邪龙骑士的枪。',
+    icon: 'img/items/xielongzhilei/weapon-fang-rib.png',
+    short: '喝彩！为我对世间万物的憎恶喝彩！',
     detail: '（占位）攻击距离 2，伤害 68，无耐久。来自 {{char-wrath}}。',
     stats: [
       { label: '伤害', value: '68' },
@@ -517,8 +517,8 @@ const ENTRIES = [
     tags: ['剑', '变身自带'],
     aliases: ['愤怒长剑'],
     searchTerms: ['fang spine', 'wrath sword'],
-    icon: 'img/items/weapon-fang-spine.png',
-    short: '（占位）邪龙骑士的剑。',
+    icon: 'img/items/xielongzhiji/weapon-fang-spine.png',
+    short: '哀悼！为正在受地狱之火灼烧的我哀悼！',
     detail: '（占位）',
     stats: [
       { label: '伤害', value: '68' }
@@ -533,7 +533,7 @@ const ENTRIES = [
     tags: ['近战', '可投掷'],
     aliases: ['练习剑'],
     searchTerms: ['rookie sword'],
-    icon: 'img/items/weapon-rookie-sword.png',
+    icon: 'img/items/新手短剑/weapon-rookie-sword.png',
     short: '（占位）靠近铁匠解锁配方。',
     detail: '（占位）',
     stats: [
@@ -581,7 +581,7 @@ const ENTRIES = [
     aliases: ['龙血'],
     searchTerms: ['dragon blood'],
     icon: 'img/items/item-dragon-blood.png',
-    short: '（占位）饮下后变身为对应罪的形态。',
+    short: '（占位）使用后后变身为对应罪的形态。',
     detail: '（占位）龙蝎掉落，每个哥杀只能选择一种。',
     stats: [],
     related: ['char-wrath', 'char-greed', 'char-gluttony', 'char-lust', 'char-sloth']
