@@ -34,7 +34,7 @@ const SITE = {
   subtitle: '如果世间真的有IF，那么被称作哥杀的男子能否拥有不同的人生？',
   workshopUrl: 'https://steamcommunity.com/sharedfiles/filedetails/?id=3242898567',
   feedbackQQ: 'QQ群：1078587287',
-  copyright: '© 2026 哥布林杀手 Mod 制作组（占位）'
+  copyright: '© 2024 哥布林杀手 Mod 制作组（占位）'
 };
 
 /**
@@ -392,7 +392,7 @@ const ENTRIES = [
     '搓东西手速快'
   ],
     cons: ['无法睡觉'],
-    abilities: [ { name: "投掷和拔出", type: "passive", desc: "可以远程投掷指定武器（铁剑和牙签）{{weapon-rookie-sword}}" },
+    abilities: [ { name: "投掷和拔出", type: "passive", desc: "可以远程投掷指定武器（铁剑和牙签）{{weapon-rookie-sword}}{{item-tooth-pick}}" },
     { name: "神明创造的特殊个体", type: "passive", desc: "如果手持武器受到攻击有25%的机会做出一次反击，反击伤害同平A，反击时受击不会扣血" },
     { name: "屹立不倒(红眼)", type: "passive", desc: "当生命值小于10%时，获得15s无敌时间，期间按照自己已损失的生命值提高自己的攻击力（每损失4%生命提高1%攻击力）攻速略有提升(每损失4%生命提高0.02%攻击速度)，如果击杀目标则按照击杀目标最大生命值的1%回复自身生命，CD1天。若无敌时间结束血量仍小于10%，则攻击倍率降低为50%，移动速度降低为50%（直到血量＞10%才可以解除）。" ,}],
     related: ['item-dragon-blood']
@@ -539,7 +539,7 @@ const ENTRIES = [
     aliases: ['新手短剑','初始短剑','初始剑'],
     searchTerms: ['rookie sword'],
     icon: 'img/items/新手短剑/weapon-rookie-sword.png',
-    short: '（占位）靠近铁匠解锁配方。',
+    short: '靠近铁匠解锁配方',
     detail: '（占位）',
     stats: [
       { label: '伤害', value: '68' },
@@ -555,12 +555,12 @@ const ENTRIES = [
     tags: ['远程', '可投掷','后续制作'],
     aliases: ['牙签'],
     searchTerms: ['toothpick'],
-    icon: 'img/items/新手短剑/item-tooth-pick.png',
+    icon: 'img/items/yaqian/item-tooth-pick.png',
     short: '靠近铁匠解锁配方',
     detail: '（占位）',
     stats: [
       { label: '伤害', value: '42.5' },
-      { label: '耐久', value: '150' }
+      { label: '消耗2木头', value: '生产4个' }
     ],
     related: []
   },
@@ -605,7 +605,7 @@ const ENTRIES = [
     tags: ['容器', '贪婪专属'],
     aliases: ['二级钱袋'],
     searchTerms: ['purse'],
-    icon: 'img/items/钱袋/equip-pursestring-1.png',
+    icon: 'img/items/钱袋/equip-pursestring-2.png',
     short: '那时的我小有所成',
     detail: '（占位）只可装 {{item-zhi-coin}} 等。',
     stats: [
@@ -621,8 +621,8 @@ const ENTRIES = [
     tags: ['开局自带'],
     aliases: ['新手背包'],
     searchTerms: ['rookie bag'],
-    icon: 'img/items/equip-rookie-backpack.png',
-    short: '（占位）',
+    icon: 'img/items/bao/equip-rookie-backpack.png',
+    short: '开局自带',
     detail: '（占位）',
     stats: [],
     related: []
@@ -635,8 +635,8 @@ const ENTRIES = [
     tags: ['后续制作'],
     aliases: ['猪皮背包'],
     searchTerms: ['rookie bag'],
-    icon: 'img/items/equip-rookie-backpack2.png',
-    short: '（占位）',
+    icon: 'img/items/bao/equip-rookie-backpack2.png',
+    short: '靠近铁匠解锁配方',
     detail: '（占位）',
     stats: [],
     related: []
