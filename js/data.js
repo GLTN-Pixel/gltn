@@ -541,7 +541,7 @@ const ENTRIES = [
     searchTerms: ['rookie sword'],
     icon: 'img/items/新手短剑/weapon-rookie-sword.png',
     short: '靠近铁匠解锁配方',
-    detail: '右键投掷，每次消耗武器25%耐久,命中敌人后会插在敌人身上造成25%减速，玩家可以选择将插在敌人身上的武器拔出(右键怪物或者快捷键R)，消耗武器25%耐久造成怪物1%最大生命值的伤害，这部分伤害会以流血形式扣除。',
+    detail: '右键投掷，每次消耗武器25%耐久,命中敌人后会插在敌人身上造成25%减速，玩家可以选择将插在敌人身上的武器拔出(右键怪物或者快捷键R)，消耗武器25%耐久造成怪物1%最大生命值的伤害，这部分伤害会以流血形式扣除。{{build-blacksmith}}',
     stats: [
       { label: '伤害', value: '68' },
       { label: '耐久', value: '150' }
@@ -558,7 +558,7 @@ const ENTRIES = [
     searchTerms: ['toothpick'],
     icon: 'img/items/yaqian/item-tooth-pick.png',
     short: '靠近铁匠解锁配方',
-    detail: '攻击同原版吹箭，命中敌人后会插在敌人身上造成25%减速，玩家可以选择将插在敌人身上的武器拔出(右键怪物或者快捷键R)，消耗武器25%耐久造成怪物1%最大生命值的伤害，这部分伤害会以流血形式扣除。',
+    detail: '攻击同原版吹箭，命中敌人后会插在敌人身上造成25%减速，玩家可以选择将插在敌人身上的武器拔出(右键怪物或者快捷键R)，消耗武器25%耐久造成怪物1%最大生命值的伤害，这部分伤害会以流血形式扣除。{{build-blacksmith}}',
     stats: [
       { label: '伤害', value: '42.5' },
       { label: '消耗2木头', value: '生产4个' }
@@ -578,7 +578,7 @@ const ENTRIES = [
     detail: '斧子在地上插三天就会消失,击杀远古犀牛获得，无耐久具有多用斧稿功能，且给予3个金锄头可以开启一键3*3功能,伤害68，右键消耗（自动检查物品栏）2个噩梦燃料开启特殊功能分身：（持续15S冷却20S）此时攻击距离为2，若在攻击距离1攻击可造成双倍伤害且分身状态下工作具有双倍效率',
     stats: [
       { label: '伤害', value: '68' },
-      { label: '耐久', value: '150' }
+      { label: '耐久', value: '无耐久' }
     ],
     related: []
   },
@@ -592,7 +592,7 @@ const ENTRIES = [
     searchTerms: ['purse'],
     icon: 'img/items/钱袋/equip-pursestring-1.png',
     short: '这是我年轻时候用过的钱袋',
-    detail: '（占位）只可装 {{item-zhi-coin}} 等。',
+    detail: '能量0—250（穷鬼）时，可消耗60能量/贽金制作，2×3=6个格子，只可以用来装 贽金、古金币、护符、宝石。在袋子里有物品的情况下，可以为哥杀提供25%加速。{{item-zhi-coin}}',
     stats: [
       { label: '格子', value: '6' }
     ],
@@ -608,7 +608,7 @@ const ENTRIES = [
     searchTerms: ['purse'],
     icon: 'img/items/钱袋/equip-pursestring-2.png',
     short: '那时的我小有所成',
-    detail: '（占位）只可装 {{item-zhi-coin}} 等。',
+    detail: '能量250—500（贫民）时，可消耗120能量/贽金制作，3×4=12个格子，只可以用来装 贽金、古金币、护符、宝石。在袋子里有物品的情况下，可以为哥杀提供25%加速和贝雷帽相等的回san。{{item-zhi-coin}}',
     stats: [
       { label: '格子', value: '12' }
     ],
@@ -624,7 +624,7 @@ const ENTRIES = [
     searchTerms: ['rookie bag'],
     icon: 'img/items/bao/equip-rookie-backpack.png',
     short: '开局自带',
-    detail: '（占位）',
+    detail: '给予铁匠并学习蓝图后可装备，同普通背包{{build-blacksmith}}',
     stats: [],
     related: []
   },
@@ -638,7 +638,7 @@ const ENTRIES = [
     searchTerms: ['rookie bag'],
     icon: 'img/items/bao/equip-rookie-backpack2.png',
     short: '靠近铁匠解锁配方',
-    detail: '（占位）',
+    detail: '给予铁匠并学习蓝图后可装备，同小猪包,但是没有减速{{build-blacksmith}}',
     stats: [],
     related: []
   },
@@ -660,13 +660,13 @@ const ENTRIES = [
     id: 'item-zhi-coin',
     type: 'item',
     form: 'greed',
-    name: '纸金币',
+    name: '贽金',
     tags: ['货币', '贪婪专属'],
     aliases: ['纸币'],
     searchTerms: ['zhi coin'],
     icon: 'img/items/item-zhi-coin.png',
-    short: '（占位）贪婪能量满后获得，组成世界的基本要素。',
-    detail: '（占位）',
+    short: '贪婪能量满后获得，组成世界的基本要素。',
+    detail: '能量满了后，再次获得能量，会获得等量的贽金，可在猪王处1:1兑换黄金可以无限堆叠，只能放入钱袋且死亡后不会离身。',
     stats: [],
     related: ['equip-pursestring-1', 'char-greed']
   },
@@ -685,6 +685,20 @@ const ENTRIES = [
     related: ['summon-mayo']
   },
   {
+    id: 'build-blacksmith',
+    type: 'building',
+    form: 'common',
+    name: '铁匠',
+    tags: ['建筑', 'NPC'],
+    aliases: ['铁匠'],
+    searchTerms: ['blacksmith'],
+    icon: 'img/items/build-blacksmith.png',
+    short: '用来把原版的装备，打造成哥杀能穿的装备',
+    detail: '将身体装备和头部装备给予铁匠，铁匠会给一个蓝图并将装备奉还，使用蓝图解锁装备栏，此装备栏可以装备对应装备，只与哥杀交易给铁匠5个碎石，给予铁匠证明',
+    stats: [],
+    related: ['summon-mayo']
+  },
+  {
     id: 'summon-mayonnaise',
     type: 'summon',
     form: 'common',
@@ -694,7 +708,7 @@ const ENTRIES = [
     searchTerms: ['summon mayonnaise'],
     icon: 'img/items/danhuangjiang/summon-mayonnaise.png',
     short: '召唤：在冰箱中心空出，周围放满8个腐烂物品',
-    detail: '召唤：在冰箱中心空出，周围放满8个腐烂物品',
+    detail: '召唤：在冰箱中心空出，周围放满8个腐烂物品；蛋黄酱在地上时鼠标右键键可以怀抱蛋黄酱，可以回san和缓慢回血（效果同帐篷，并消耗蛋黄酱25%饥饿度）；帽子功能（可以右键切换形态）：给予牛帽/眼球伞改变可以形态，具有相应属性，且带帽子时有一个贝雷帽的回san效果，装备时，吸收一定量的雨露值，蛋黄酱开始发芽并开花共五个阶段。开花效果：右键耕地使用，以蛋黄酱为中心，灭火器范围内的农地湿度和肥度会达到峰值，农作物被照料。（有一个飞到天上的动画）',
     stats: [
       { label: '生命', value: '600' },
       { label: '饥饿度', value: '600' },
