@@ -575,7 +575,7 @@ const ENTRIES = [
     searchTerms: ['rookie sword'],
     icon: 'img/items/xiniufuzi/weapon-shadow-axe.png',
     short: '击杀犀牛获得',
-    detail: '斧子在地上插三天就会消失,击杀远古犀牛获得，无耐久具有多用斧稿功能，且给予3个金锄头可以开启一键3*3功能,伤害68，右键消耗（自动检查物品栏）2个噩梦燃料开启特殊功能分身：（持续15S冷却20S）此时攻击距离为2，若在攻击距离1攻击可造成双倍伤害且分身状态下工作具有双倍效率',
+    detail: '<p>斧子在地上插三天就会消失。</p><p>击杀远古犀牛获得，无耐久具有多用斧稿功能。</p><p>且给予3个金锄头可以开启一键3*3功能,伤害68。</p><p>右键消耗（自动检查物品栏）2个噩梦燃料开启特殊功能分身。</p><p>（持续15S冷却20S）此时攻击距离为2，若在攻击距离1攻击可造成双倍伤害且分身状态下工作具有双倍效率</p>',
     stats: [
       { label: '伤害', value: '68' },
       { label: '耐久', value: '无耐久' }
@@ -657,6 +657,20 @@ const ENTRIES = [
     related: ['char-wrath', 'char-greed', 'char-gluttony', 'char-lust', 'char-sloth']
   },
   {
+    id: 'item-midas-golden-glove',
+    type: 'item',
+    form: 'greed',
+    name: '原初之握',
+    tags: ['米达斯的黄金手', '贪婪专属'],
+    aliases: ['米达斯的黄金手'],
+    searchTerms: ['item-midas-golden-glove'],
+    icon: 'img/items/huangjinshou/item-midas-golden-glove.png',
+    short: '点石成金也不是不可能',
+    detail: '能量500—750时，可消耗520能量/贽金制作手套/点金法杖/战斗宝剑三种切换形态，',
+    stats: [],
+    related: ['equip-pursestring-1', 'char-greed']
+  },
+  {
     id: 'item-zhi-coin',
     type: 'item',
     form: 'greed',
@@ -692,7 +706,7 @@ const ENTRIES = [
     tags: ['建筑', 'NPC'],
     aliases: ['铁匠'],
     searchTerms: ['blacksmith'],
-    icon: 'img/items/build-blacksmith.png',
+    icon: 'img/items/teijiang/build-black-smith.png',
     short: '用来把原版的装备，打造成哥杀能穿的装备',
     detail: '将身体装备和头部装备给予铁匠，铁匠会给一个蓝图并将装备奉还，使用蓝图解锁装备栏，此装备栏可以装备对应装备，只与哥杀交易给铁匠5个碎石，给予铁匠证明',
     stats: [],
@@ -708,7 +722,7 @@ const ENTRIES = [
     searchTerms: ['summon mayonnaise'],
     icon: 'img/items/danhuangjiang/summon-mayonnaise.png',
     short: '召唤：在冰箱中心空出，周围放满8个腐烂物品',
-    detail: '召唤：在冰箱中心空出，周围放满8个腐烂物品；蛋黄酱在地上时鼠标右键键可以怀抱蛋黄酱，可以回san和缓慢回血（效果同帐篷，并消耗蛋黄酱25%饥饿度）；帽子功能（可以右键切换形态）：给予牛帽/眼球伞改变可以形态，具有相应属性，且带帽子时有一个贝雷帽的回san效果，装备时，吸收一定量的雨露值，蛋黄酱开始发芽并开花共五个阶段。开花效果：右键耕地使用，以蛋黄酱为中心，灭火器范围内的农地湿度和肥度会达到峰值，农作物被照料。（有一个飞到天上的动画）',
+    detail: '召唤：在冰箱中心空出，周围放满8个腐烂物品；蛋黄酱在地上时鼠标右键键可以怀抱蛋黄酱，可以回san和缓慢回血（效果同帐篷，并消耗蛋黄酱25%饥饿度）；帽子功能（可以右键切换形态）：给予牛帽/眼球伞改变可以形态，具有相应属性，且带帽子时有一个贝雷帽的回san效果，装备时，吸收一定量的雨露值，蛋黄酱开始发芽并开花共五个阶段。开花效果：右键耕地使用，以蛋黄酱为中心，灭火器范围内的农地湿度和肥度会达到峰值，农作物被照料。（有一个飞到天上的动画）{{build-blacksmith}}',
     stats: [
       { label: '生命', value: '600' },
       { label: '饥饿度', value: '600' },
