@@ -88,7 +88,8 @@ const ASSETS = {
     footer: 'img/bg/blood-bg-4.png'
   },
   signs: {
-    wrath: 'img/sign/wrath-sign.png'
+    wrath: 'img/sign/wrath-sign.png',
+    lust: 'img/sign/lust-sign.png'
   },
   donationQr: 'img/don/donation-qr.png',
   textures: {
@@ -574,9 +575,7 @@ const ENTRIES = [
     searchTerms: ['rookie sword'],
     icon: 'img/items/xiniufuzi/weapon-shadow-axe.png',
     short: '击杀犀牛获得',
-    detail:'斧子在地上插三天就会消失',
-    '击杀远古犀牛获得，无耐久具有多用斧稿功能，且给予3个金锄头可以开启一键3*3功能':
-    '伤害68，右键消耗（自动检查物品栏）2个噩梦燃料开启特殊功能分身：（持续15S冷却20S）此时攻击距离为2，若在攻击距离1攻击可造成双倍伤害且分身状态下工作具有双倍效率', 
+    detail: '斧子在地上插三天就会消失,击杀远古犀牛获得，无耐久具有多用斧稿功能，且给予3个金锄头可以开启一键3*3功能,伤害68，右键消耗（自动检查物品栏）2个噩梦燃料开启特殊功能分身：（持续15S冷却20S）此时攻击距离为2，若在攻击距离1攻击可造成双倍伤害且分身状态下工作具有双倍效率',
     stats: [
       { label: '伤害', value: '68' },
       { label: '耐久', value: '150' }
