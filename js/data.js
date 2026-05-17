@@ -677,7 +677,6 @@ const ENTRIES = [
     aliases: ['米达斯的黄金手'],
     searchTerms: ['item-midas-golden-glove'],
     icon: 'img/items/huangjinshou/item-midas-golden-glove.png',
-    gallery: ['img/items/huangjinshou/item-midas-golden-glove.png','img/items/huangjinshou/item-midas-golden-glove1.png','img/items/huangjinshou/item-midas-golden-glove2.png'],
     short: '点石成金也不是不可能',
     detail: '能量500—750时，可消耗520能量/贽金制作手套/点金法杖/战斗宝剑三种切换形态，\n1.手套功能\n自带一个格子，格子里可以放各色宝石，\n当格子里有宝石可以右键人物(选择变为响指)进行打响指，消耗宝石获得不同的效果镶嵌彩虹宝石后打响指升级为等级2\n2.战斗宝剑功能\n辉耀：可z键开启每秒消耗6能量/贽金对周围单位造成每秒30点伤害，此功能在能量低于6时自动关闭。\n点金：杀死敌人后会把敌人变成愚者之金，\n3.点金法杖功能\n万能工具可锤,稿,砍,挖,耕\n每天一次将不需要的物品1:1转换为贽金。\n',
     stats: [{ label: '宝石种类', value: '响指效果' },
