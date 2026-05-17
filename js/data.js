@@ -595,8 +595,8 @@ const ENTRIES = [
     related: []
   },
   {
-    id: 'equip-pursestring-1',
-    type: 'equipment',
+    id: 'item-pursestring-1',
+    type: 'item',
     form: 'greed',
     name: '钱袋（一级）',
     tags: ['容器', '贪婪专属'],
@@ -611,8 +611,8 @@ const ENTRIES = [
     related: ['item-zhi-coin']
   },
   {
-    id: 'equip-pursestring-1',
-    type: 'equipment',
+    id: 'item-pursestring-1',
+    type: 'item',
     form: 'greed',
     name: '钱袋（二级）',
     tags: ['容器', '贪婪专属'],
