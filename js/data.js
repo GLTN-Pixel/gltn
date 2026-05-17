@@ -74,13 +74,16 @@ const SITE = {
  * - 如果客户使用图床 / CDN，也可以直接写完整 URL。
  */
 const ASSETS = {
-  heroCovers: [
-    'img/cover1.png',
-    'img/cover2.png',
-    'img/cover3.png',
-    'img/cover4.png',
-    'img/cover5.png'
-  ],
+  heroCovers: Array.from({ length: 50 }, (_, index) => {
+    const seededCovers = [
+      'img/cover1.png',
+      'img/cover2.png',
+      'img/cover3.png',
+      'img/cover4.png',
+      'img/cover5.png'
+    ];
+    return seededCovers[index] || '';
+  }),
   backgroundBlood: {
     hero: 'img/bg/blood-bg-1.png',
     section1: 'img/bg/blood-bg-2.png',
@@ -316,7 +319,7 @@ const SECTIONS = [
  *
  * {
  *   id: "char-example",
- *   type: "character",
+ *   type: "character", // 也可以写成 ["character", "mechanic"]
  *   form: "wrath",
  *   name: "愤怒形态",
  *   title: "称号/标题",
@@ -325,9 +328,12 @@ const SECTIONS = [
  *   searchTerms: ["爆发", "怒气", "dragon wrath"],
  *   portrait: "img/characters/char-example-portrait.png",
  *   splash: "img/characters/char-example-splash.jpg",
+ *   gallery: ["img/characters/char-example-2.jpg", "img/characters/char-example-3.jpg"],
  *   quote: "一句角色台词",
- *   short: "卡片上的一句短描述。",
- *   detail: "<p>支持 HTML，也支持 {{item-example}} 这样的条目跳转。</p>",
+ *   short: `卡片上的一句短描述。
+ * 第二行也会显示出来。`,
+ *   detail: `支持换行，也支持 {{item-example}} 这样的条目跳转。
+ * 如果需要复杂排版，也可以继续写 HTML。`,
  *   baseStats: { health: 200, hunger: 200, sanity: 200 },
  *   pros: ["优势 1", "优势 2"],
  *   cons: ["劣势 1"],
@@ -342,6 +348,7 @@ const SECTIONS = [
  * - `searchTerms`: 扩展搜索词，例如英文、拼音、俗称。
  * - `portrait`: 卡片立绘。
  * - `splash`: 角色弹窗顶部横幅。
+ * - `gallery`: 可选，角色详情弹窗里的多图滚动列表。
  * - `detail`: 角色背景或详细说明。
  * - `related`: 弹窗底部关联条目按钮。
  */
@@ -351,15 +358,18 @@ const SECTIONS = [
  *
  * {
  *   id: "item-example",
- *   type: "item",
+ *   type: "item", // 也可以写成 ["weapon", "item"]
  *   form: "common",
  *   name: "示例物品",
  *   tags: ["材料", "任务道具"],
  *   aliases: ["旧称", "英文名"],
  *   searchTerms: ["craft material"],
  *   icon: "img/items/item-example.png",
- *   short: "卡片上的短描述。",
- *   detail: "详细说明，支持 {{char-example}} 跳转。",
+ *   gallery: ["img/items/item-example-detail-1.png", "img/items/item-example-detail-2.png"],
+ *   short: `卡片上的短描述。
+ * 第二行摘要。`,
+ *   detail: `详细说明，支持 {{char-example}} 跳转。
+ * 也支持多行录入。`,
  *   stats: [
  *     { label: "伤害", value: "68" },
  *     { label: "耐久", value: "150" }
@@ -369,6 +379,7 @@ const SECTIONS = [
  *
  * 示例解释:
  * - `icon`: 列表卡片和弹窗头图使用的图标。
+ * - `gallery`: 可选，物品详情弹窗里的多图滚动列表。
  * - `stats`: 数值区块，非数值条目可留空数组。
  * - `related`: 关联的角色、机制、材料等条目。
  */
@@ -769,8 +780,10 @@ const ENTRIES = [
  *   icon: "img/icons/book.svg",
  *   title: "页面功能",
  *   heading: "怎么使用这个网站？",
- *   summary: "卡片上的一句摘要。",
- *   detail: "<p>弹窗内的详细说明，支持 HTML。</p>"
+ *   summary: `卡片上的一句摘要。
+ * 第二行也会显示。`,
+ *   detail: `弹窗内的详细说明支持多行。
+ * 也支持 HTML。`
  * }
  *
  * 示例解释:

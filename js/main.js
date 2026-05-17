@@ -164,6 +164,25 @@
     return typeMap.get(typeId) || { id: typeId, name: typeId, icon: '' };
   }
 
+  function getEntryTypes(entry) {
+    if (Array.isArray(entry?.type)) {
+      return entry.type.filter((typeId) => stringHasValue(typeId));
+    }
+    return stringHasValue(entry?.type) ? [entry.type.trim()] : [];
+  }
+
+  function getPrimaryTypeId(entry) {
+    return getEntryTypes(entry)[0] || 'item';
+  }
+
+  function entryHasType(entry, typeId) {
+    return getEntryTypes(entry).includes(typeId);
+  }
+
+  function isCharacterEntry(entry) {
+    return entryHasType(entry, 'character');
+  }
+
   function getFormMeta(formId) {
     return formMap.get(formId) || { id: formId, name: formId, color: null };
   }
@@ -214,6 +233,27 @@
     return resolved;
   }
 
+  function uniqueAssetPaths(values) {
+    const seen = new Set();
+    return values.reduce((result, value) => {
+      const path = String(value || '').trim();
+      if (!path || seen.has(path)) {
+        return result;
+      }
+      seen.add(path);
+      result.push(path);
+      return result;
+    }, []);
+  }
+
+  function getEntryGalleryImages(entry) {
+    const gallery = Array.isArray(entry.gallery) ? entry.gallery : [];
+    const seededImages = isCharacterEntry(entry)
+      ? [entry.splash, ...gallery]
+      : [entry.icon, ...gallery];
+    return uniqueAssetPaths(seededImages);
+  }
+
   function renderTextDetail(value, fallback) {
     const resolved = String(value || '').trim();
     if (!resolved || (!state.editorMode && isPlaceholderText(resolved))) {
@@ -250,7 +290,7 @@
   function getVisibleEntries() {
     const query = state.query.trim().toLowerCase();
     return ENTRIES.filter((entry) => {
-      const matchType = state.type === 'all' || entry.type === state.type;
+      const matchType = state.type === 'all' || entryHasType(entry, state.type);
       const matchForm = state.form === 'all' || entry.form === state.form;
       const matchQuery = !query || getSearchFields(entry).some((field) => String(field || '').toLowerCase().includes(query));
       return matchType && matchForm && matchQuery;
@@ -276,7 +316,7 @@
   }
 
   function getRequiredAssets(entry) {
-    if (entry.type === 'character') {
+    if (isCharacterEntry(entry)) {
       return [
         { key: 'portrait', label: text('assetFallbackPortrait', '{name} 立绘待提供') },
         { key: 'splash', label: text('assetFallbackSplash', '{name} 横幅待提供') }
@@ -444,7 +484,7 @@
       const override = entry.bloodOverride;
       const variant = BLOOD_VARIANTS.includes(override.variant) ? override.variant : null;
       if (variant) {
-        const positions = entry.type === 'character' ? BLOOD_POSITIONS_CHARACTER : BLOOD_POSITIONS_COMPACT;
+        const positions = isCharacterEntry(entry) ? BLOOD_POSITIONS_CHARACTER : BLOOD_POSITIONS_COMPACT;
         const position = override.position && positions.includes(override.position)
           ? override.position
           : positions[hashToIndex(`${entry.id}:p`, positions.length)];
@@ -461,7 +501,7 @@
       }
     }
 
-    const positions = entry.type === 'character' ? BLOOD_POSITIONS_CHARACTER : BLOOD_POSITIONS_COMPACT;
+    const positions = isCharacterEntry(entry) ? BLOOD_POSITIONS_CHARACTER : BLOOD_POSITIONS_COMPACT;
     const variant = BLOOD_VARIANTS[hashToIndex(`${entry.id}:v`, BLOOD_VARIANTS.length)];
     const rotation = hashToIndex(`${entry.id}:r`, 360);
     let position = positions[hashToIndex(`${entry.id}:p`, positions.length)];
@@ -554,13 +594,25 @@
 
   function renderHeroMedia() {
     refs.heroTrack.replaceChildren();
-    const covers = Array.isArray(ASSETS.heroCovers) ? ASSETS.heroCovers.filter(Boolean) : [];
-    const items = new Array(4).fill('').map((_, index) => covers[index] || covers[index % Math.max(covers.length, 1)] || '');
-    refs.heroTrack.style.width = '400%';
+    const items = Array.isArray(ASSETS.heroCovers)
+      ? ASSETS.heroCovers.filter((coverPath) => stringHasValue(coverPath))
+      : [];
+    const visibleItems = items.length ? items : [''];
+    const slideCount = visibleItems.length;
+    const slideWidth = 100 / slideCount;
+    const cycleShift = ((slideCount - 1) / slideCount) * 100;
+    const duration = Math.max(slideCount * 3.5, 28);
 
-    items.forEach((coverPath) => {
+    refs.heroTrack.style.width = `${slideCount * 100}%`;
+    refs.heroTrack.style.setProperty('--hero-cycle-shift', `${cycleShift}%`);
+    refs.heroTrack.style.transform = 'translateX(0)';
+    refs.heroTrack.style.animation = slideCount > 1
+      ? `hero-scroll-dynamic ${duration}s steps(${slideCount - 1}) infinite`
+      : 'none';
+
+    visibleItems.forEach((coverPath) => {
       const slide = createElement('span', 'hero__slide');
-      slide.style.flex = '0 0 25%';
+      slide.style.flex = `0 0 ${slideWidth}%`;
       if (stringHasValue(coverPath)) {
         slide.style.backgroundImage = toCssUrl(coverPath);
       }
@@ -780,7 +832,7 @@
     let renderedSections = 0;
 
     SECTIONS.forEach((section) => {
-      const items = visibleEntries.filter((entry) => section.types.includes(entry.type));
+      const items = visibleEntries.filter((entry) => getEntryTypes(entry).some((typeId) => section.types.includes(typeId)));
       if (!items.length) {
         return;
       }
@@ -835,12 +887,12 @@
   }
 
   function createCardElement(entry) {
-    return entry.type === 'character' ? createCharacterCard(entry) : createCompactCard(entry);
+    return isCharacterEntry(entry) ? createCharacterCard(entry) : createCompactCard(entry);
   }
 
   function createCharacterCard(entry) {
     const form = getFormMeta(entry.form);
-    const type = getTypeMeta(entry.type);
+    const type = getTypeMeta(getPrimaryTypeId(entry));
     const issues = getEntryIssues(entry);
 
     const card = createElement('button', 'character-card');
@@ -909,7 +961,7 @@
 
   function createCompactCard(entry) {
     const form = getFormMeta(entry.form);
-    const type = getTypeMeta(entry.type);
+    const type = getTypeMeta(getPrimaryTypeId(entry));
     const issues = getEntryIssues(entry);
 
     const card = createElement('button', 'entry-card entry-card--compact');
@@ -1036,8 +1088,106 @@
     `;
   }
 
+  function renderEntryGallery(images, options = {}) {
+    const { variant = 'item', altBase = '', fallbackLabel = '' } = options;
+    const slideList = (images.length ? images : ['']).map((imagePath, index) => {
+      const alt = images.length > 1 ? `${altBase} ${index + 1}` : altBase;
+      return `
+        <figure class="entry-gallery__slide" data-gallery-slide data-fallback-label="${escapeHtml(fallbackLabel)}">
+          <img src="${escapeHtml(imagePath || '')}" alt="${escapeHtml(alt)}">
+          <span class="entry-gallery__fallback">${escapeHtml(fallbackLabel)}</span>
+        </figure>
+      `;
+    }).join('');
+
+    const controls = images.length > 1 ? `
+      <button class="entry-gallery__nav entry-gallery__nav--prev" type="button" data-gallery-prev aria-label="${escapeHtml(text('galleryPrevLabel', '上一张'))}">‹</button>
+      <button class="entry-gallery__nav entry-gallery__nav--next" type="button" data-gallery-next aria-label="${escapeHtml(text('galleryNextLabel', '下一张'))}">›</button>
+    ` : '';
+
+    const dots = images.length > 1 ? `
+      <div class="entry-gallery__dots">
+        ${images.map((_, index) => `
+          <button
+            class="entry-gallery__dot${index === 0 ? ' is-active' : ''}"
+            type="button"
+            data-gallery-dot="${index}"
+            aria-label="${escapeHtml(template(text('galleryDotLabel', '查看第 {index} 张图片'), { index: index + 1 }))}"
+            aria-pressed="${index === 0 ? 'true' : 'false'}"></button>
+        `).join('')}
+      </div>
+    ` : '';
+
+    return `
+      <div class="entry-gallery entry-gallery--${variant}" data-gallery>
+        <div class="entry-gallery__viewport">
+          <div class="entry-gallery__track" data-gallery-track>
+            ${slideList}
+          </div>
+          ${controls}
+        </div>
+        ${dots}
+      </div>
+    `;
+  }
+
+  function initializeModalGalleries() {
+    refs.modalBody.querySelectorAll('[data-gallery]').forEach((gallery) => {
+      const track = gallery.querySelector('[data-gallery-track]');
+      const slides = [...gallery.querySelectorAll('[data-gallery-slide]')];
+      const dots = [...gallery.querySelectorAll('[data-gallery-dot]')];
+      const prev = gallery.querySelector('[data-gallery-prev]');
+      const next = gallery.querySelector('[data-gallery-next]');
+
+      slides.forEach((slide) => {
+        const image = slide.querySelector('img');
+        bindImageFallback(image, slide, slide.dataset.fallbackLabel || '');
+      });
+
+      if (!track || !slides.length) {
+        return;
+      }
+
+      let index = 0;
+      const sync = () => {
+        track.style.transform = `translateX(-${index * 100}%)`;
+        dots.forEach((dot, dotIndex) => {
+          const active = dotIndex === index;
+          dot.classList.toggle('is-active', active);
+          dot.setAttribute('aria-pressed', String(active));
+        });
+      };
+
+      const goTo = (nextIndex) => {
+        index = (nextIndex + slides.length) % slides.length;
+        sync();
+      };
+
+      prev?.addEventListener('click', () => goTo(index - 1));
+      next?.addEventListener('click', () => goTo(index + 1));
+      dots.forEach((dot, dotIndex) => {
+        dot.addEventListener('click', () => goTo(dotIndex));
+      });
+
+      sync();
+    });
+  }
+
   function renderItemModal(entry) {
     const form = getFormMeta(entry.form);
+    const galleryImages = getEntryGalleryImages(entry);
+    const galleryMarkup = galleryImages.length > 1
+      ? `
+        <section class="modal-item__gallery">
+          <h3 class="modal__section-title">${escapeHtml(text('modalGalleryTitle', '图片'))}</h3>
+          ${renderEntryGallery(galleryImages, {
+            variant: 'item',
+            altBase: `${entry.name || ''} 图片`,
+            fallbackLabel: getAssetFallbackLabel(entry, 'icon')
+          })}
+        </section>
+      `
+      : '';
 
     refs.modalBody.innerHTML = `
       <article class="modal-item">
@@ -1053,6 +1203,7 @@
             <span class="modal__badge"${form.color ? ` style="--form-color:${escapeHtml(form.color)}"` : ''}>${escapeHtml(form.name)}</span>
           </div>
         </div>
+        ${galleryMarkup}
         ${renderTagList(entry.tags)}
         <h3 class="modal__section-title">${escapeHtml(text('modalDescriptionTitle', '说明'))}</h3>
         <p class="modal-detail">${renderTextDetail(entry.detail, text('pendingDescriptionFallback', '说明待补充'))}</p>
@@ -1064,10 +1215,12 @@
     const modalIcon = refs.modalBody.querySelector('.modal-item__icon');
     const modalImage = refs.modalBody.querySelector('.modal-item__icon img');
     bindImageFallback(modalImage, modalIcon, getAssetFallbackLabel(entry, 'icon'));
+    initializeModalGalleries();
   }
 
   function renderCharacterModal(entry) {
     const form = getFormMeta(entry.form);
+    const galleryImages = getEntryGalleryImages(entry);
     const abilities = entry.abilities && entry.abilities.length
       ? entry.abilities.map((ability) => `
           <article class="char-modal__ability">
@@ -1122,7 +1275,20 @@
 
     const splash = refs.modalBody.querySelector('.char-modal__splash');
     const splashImage = refs.modalBody.querySelector('.char-modal__splash-image');
-    bindImageFallback(splashImage, splash, getAssetFallbackLabel(entry, 'splash'));
+    const splashFallback = refs.modalBody.querySelector('.char-modal__splash-fallback');
+    const splashOverlay = refs.modalBody.querySelector('.char-modal__splash-overlay');
+    if (splash && splashOverlay) {
+      splashOverlay.insertAdjacentHTML('beforebegin', renderEntryGallery(galleryImages, {
+        variant: 'hero',
+        altBase: `${entry.name || ''} 角色图`,
+        fallbackLabel: getAssetFallbackLabel(entry, 'splash')
+      }));
+      splashImage?.remove();
+      splashFallback?.remove();
+    } else {
+      bindImageFallback(splashImage, splash, getAssetFallbackLabel(entry, 'splash'));
+    }
+    initializeModalGalleries();
   }
 
   function renderCharacterStat(kind, icon, label, value) {
@@ -1196,8 +1362,8 @@
     }
 
     state.activeModal = { kind: 'entry', id: entryId };
-    refs.modalContent.classList.toggle('modal__content--character', entry.type === 'character');
-    if (entry.type === 'character') {
+    refs.modalContent.classList.toggle('modal__content--character', isCharacterEntry(entry));
+    if (isCharacterEntry(entry)) {
       renderCharacterModal(entry);
     } else {
       renderItemModal(entry);

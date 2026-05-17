@@ -190,17 +190,35 @@ function validateInfoCards(cards, reporter) {
   });
 }
 
+function normalizeEntryTypes(entryType) {
+  if (Array.isArray(entryType)) {
+    return entryType.filter((typeId) => isNonEmptyString(typeId));
+  }
+  return isNonEmptyString(entryType) ? [entryType] : [];
+}
+
 function validateEntries(entries, validTypes, validForms, reporter) {
   validateCollectionIds(entries, 'ENTRIES', reporter);
   const entryIds = new Set(entries.map((entry) => entry.id).filter(Boolean));
 
   entries.forEach((entry, index) => {
     const label = `ENTRIES[${index}](${entry.id || 'unknown'})`;
-    ['id', 'type', 'form', 'name'].forEach((field) => {
+    ['id', 'form', 'name'].forEach((field) => {
       if (!isNonEmptyString(entry[field])) {
         reporter.error(`${label} 缺少 ${field}`);
       }
     });
+
+    const entryTypes = normalizeEntryTypes(entry.type);
+    if (!entryTypes.length) {
+      reporter.error(`${label} missing type`);
+    }
+    entryTypes.forEach((typeId) => {
+      if (!validTypes.has(typeId)) {
+        reporter.error(`${label} unknown type: "${typeId}"`);
+      }
+    });
+    entry.type = entryTypes.includes('character') ? 'character' : (entryTypes[0] || '');
 
     if (!validTypes.has(entry.type)) {
       reporter.error(`${label} 使用了未知 type: "${entry.type}"`);
@@ -239,6 +257,14 @@ function validateEntries(entries, validTypes, validForms, reporter) {
       });
     } else if (entry.searchTerms !== undefined) {
       reporter.warn(`${label}.searchTerms 应为字符串数组`);
+    }
+
+    if (Array.isArray(entry.gallery)) {
+      entry.gallery.forEach((assetPath, assetIndex) => {
+        validateAssetField(label, `gallery[${assetIndex}]`, assetPath, reporter, false);
+      });
+    } else if (entry.gallery !== undefined) {
+      reporter.error(`${label}.gallery should be an array`);
     }
 
     pushLengthWarning(reporter.warnings, `${label}.name`, entry.name, TEXT_LIMITS.entryName);
