@@ -561,7 +561,7 @@ const ENTRIES = [
   },
   {
     id: 'item-tooth-pick',
-    types: ['item','weapon'],
+    type: 'item',
     form: 'common',
     name: '牙签',
     tags: ['远程', '可投掷','后续制作'],
