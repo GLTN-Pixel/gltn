@@ -1417,6 +1417,8 @@ a:focus-visible {
   position: relative;
   flex: 0 0 100%;
   min-width: 0;
+  width: 100%;
+  margin: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1509,15 +1511,17 @@ a:focus-visible {
 }
 
 .entry-gallery--item .entry-gallery__viewport {
-  aspect-ratio: 16 / 9;
+  aspect-ratio: auto;
 }
 
 .entry-gallery--item .entry-gallery__slide {
-  padding: 18px;
+  padding: 0;
 }
 
 .entry-gallery--item .entry-gallery__slide img {
-  object-fit: contain;
+  width: 100%;
+  height: auto;
+  object-fit: initial;
 }
 
 .modal__title {
@@ -1704,7 +1708,9 @@ a:focus-visible {
 
 .char-modal__splash {
   position: relative;
-  height: 320px;
+  display: flex;
+  flex-direction: column;
+  height: auto;
   background:
     linear-gradient(180deg, var(--bg-section) 0%, var(--bg-main) 100%);
   background-size: cover;
@@ -1713,8 +1719,8 @@ a:focus-visible {
 }
 
 .entry-gallery--hero {
-  position: absolute;
-  inset: 0;
+  position: relative;
+  inset: auto;
   z-index: 0;
 }
 
@@ -1725,6 +1731,8 @@ a:focus-visible {
 }
 
 .entry-gallery--hero .entry-gallery__viewport {
+  min-height: 0;
+  aspect-ratio: auto;
   border: 0;
   border-radius: 0;
   background: transparent;
@@ -1735,7 +1743,9 @@ a:focus-visible {
 }
 
 .entry-gallery--hero .entry-gallery__slide img {
-  object-fit: cover;
+  width: 100%;
+  height: auto;
+  object-fit: initial;
 }
 
 .entry-gallery--hero .entry-gallery__dots {
@@ -1775,18 +1785,17 @@ a:focus-visible {
 }
 
 .char-modal__splash-overlay {
-  position: absolute;
-  inset: 0;
+  position: relative;
+  inset: auto;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
   padding: 24px 32px;
   z-index: 1;
-  background: linear-gradient(180deg, rgba(15,16,20,0.3) 0%, rgba(15,16,20,0.95) 100%);
+  background: linear-gradient(180deg, rgba(20,22,28,0.92) 0%, rgba(15,16,20,0.98) 100%);
 }
 
 .char-modal__splash-overlay .modal__actions {
-  margin-bottom: auto;
+  margin-bottom: 18px;
 }
 
 .char-modal__category-badge {
@@ -2164,7 +2173,7 @@ a:focus-visible {
   }
 
   .char-modal__splash {
-    height: 220px;
+    height: auto;
   }
 
   .char-modal__splash-overlay {

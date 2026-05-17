@@ -568,7 +568,7 @@ const ENTRIES = [
     aliases: ['牙签'],
     searchTerms: ['toothpick'],
     icon: 'img/items/yaqian/item-tooth-pick.png',
-    gallery: ['img/items/yaqian/item-tooth-pick1.png','img/items/yaqian/item-tooth-pick2.png','img/items/yaqian/item-tooth-pick3.png'],
+    gallery: ['img/items/yaqian/item-tooth-pick.png','img/items/yaqian/item-tooth-pick1.png','img/items/yaqian/item-tooth-pick2.png'],
     short: '靠近铁匠解锁配方',
     detail: '攻击同原版吹箭，命中敌人后会插在敌人身上造成25%减速，玩家可以选择将插在敌人身上的武器拔出(右键怪物或者快捷键R)，消耗武器25%耐久造成怪物1%最大生命值的伤害，这部分伤害会以流血形式扣除。{{build-blacksmith}}',
     stats: [
