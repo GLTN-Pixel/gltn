@@ -688,7 +688,7 @@ const ENTRIES = [
     { label: '橙宝石', value: '5s内自动拾取角色周围 4 距离单位内的一个可堆叠的物品或物品形态的小形生物。每次只拾取 1 个，即使是对于多个堆叠在一起的物品(此设定同原版懒人护符)' },
     { label: '彩虹宝石', value: '将装备升级为等级2' },
   ],
-    related: ['char-greed','item-midas-golden-glove-1']
+    related: ['char-greed','item-midas-golden-glove-1','item-midas-golden-glove-2']
   },
   {
     id: 'item-midas-golden-glove-1',
@@ -722,7 +722,29 @@ const ENTRIES = [
     { label: '橙+黄+绿', value: '开启/停止暴动' },
     { label: '红+黄+紫', value: '降雨/停雨' },
   ],
-    related: ['char-greed','item-midas-golden-glove']
+    related: ['char-greed','item-midas-golden-glove','item-midas-golden-glove-2']
+  },
+  {
+    id: 'item-midas-golden-glove-2',
+    type: 'item',
+    form: 'greed',
+    name: '零开亿结',
+    tags: ['米达斯的黄金手', '贪婪专属'],
+    aliases: ['米达斯的黄金手'],
+    searchTerms: ['item-midas-golden-glove'],
+    icon: 'img/items/huangjinshou2/item-midas-golden-glove-2.png',
+    short: '点石成金也不是不可能',
+    detail: '由秩序之手升级而成，\n1.手套功能升级\n获得七宝转换功能，自带一个ui，格子里可以放各种七宝，\n当格子里有七宝可以获得对应七宝被动\n2.战斗宝剑功能\n辉耀：可z键开启每秒消耗6能量/贽金对周围单位造成每秒30点伤害，此功能在能量低于6时自动关闭。\n点金：杀死敌人后会把敌人变成愚者之金，\n3.点金法杖功能\n万能工具可锤,稿,砍,挖,耕\n每天一次将不需要的物品1:1转换为贽金。\n',
+    stats: [{ label: '七宝种类', value: '转换配方' },
+    { label: '红翡', value: '蓝钴+1500金币' },
+    { label: '绿翠', value: '红翡+1500金币' },
+    { label: '蓝钴', value: '1500金币+3古金币' },
+    { label: '紫晶', value: '1500金币+蓝钴+红宝石' },
+    { label: '黄玉', value: '1500金币+绿翠+红宝石' },
+    { label: '琥珀', value: '1500金币+红翡+绿翠' },
+    { label: '虹瞳', value: '3000金币+黄玉+紫晶+琥珀+红翡+绿翠+蓝钴' },
+  ],
+    related: ['char-greed','item-midas-golden-glove','item-midas-golden-glove-1']
   },
   {
     id: 'item-zhi-coin',
