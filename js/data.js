@@ -717,7 +717,7 @@ const ENTRIES = [
     tags: ['建筑', 'NPC'],
     aliases: ['铁匠'],
     searchTerms: ['blacksmith'],
-    icon: 'img/items/teijiang/build-black-smith.png',
+    icon: 'img/items/tiejiang/build-black-smith.png',
     short: '用来把原版的装备，打造成哥杀能穿的装备',
     detail: '将身体装备和头部装备给予铁匠，铁匠会给一个蓝图并将装备奉还，使用蓝图解锁装备栏，此装备栏可以装备对应装备，只与哥杀交易给铁匠5个碎石，给予铁匠证明',
     stats: [],
