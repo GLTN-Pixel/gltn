@@ -608,10 +608,10 @@ const ENTRIES = [
     stats: [
       { label: '格子', value: '6' }
     ],
-    related: ['item-zhi-coin']
+    related: ['item-zhi-coin','item-pursestring-2','char-greed']
   },
   {
-    id: 'item-pursestring-1',
+    id: 'item-pursestring-2',
     type: 'item',
     form: 'greed',
     name: '钱袋（二级）',
@@ -624,7 +624,7 @@ const ENTRIES = [
     stats: [
       { label: '格子', value: '12' }
     ],
-    related: ['item-zhi-coin']
+    related: ['item-zhi-coin','item-pursestring-1','char-greed']
   },
   {
     id: 'equip-rookie-backpack',
@@ -754,11 +754,39 @@ const ENTRIES = [
     tags: ['货币', '贪婪专属'],
     aliases: ['纸币'],
     searchTerms: ['zhi coin'],
-    icon: 'img/items/item-zhi-coin.png',
+    icon: 'img/items/zhijin/item-zhi-coin.png',
     short: '贪婪能量满后获得，组成世界的基本要素。',
     detail: '能量满了后，再次获得能量，会获得等量的贽金，可在猪王处1:1兑换黄金可以无限堆叠，只能放入钱袋且死亡后不会离身。',
     stats: [],
-    related: ['equip-pursestring-1', 'char-greed']
+    related: ['equip-pursestring-1', 'char-greed','item-pursestring-1','item-pursestring-2']
+  },
+  {
+    id: 'item-zhi-coin',
+    type: 'item',
+    form: 'greed',
+    name: '钺金',
+    tags: ['货币', '贪婪专属'],
+    aliases: ['纸币'],
+    searchTerms: ['yue coin'],
+    icon: 'img/items/zhijin/item-yue-coin.png',
+    short: '贪婪能量满后获得，组成世界的基本要素。',
+    detail: '使用贽金制作而成',
+    stats: [],
+    related: ['equip-pursestring-1', 'char-greed','item-pursestring-1','item-pursestring-2']
+  },
+  {
+    id: 'item-gu-coin',
+    type: 'item',
+    form: 'greed',
+    name: '古金币金',
+    tags: ['货币', '贪婪专属'],
+    aliases: ['纸币'],
+    searchTerms: ['gu coin'],
+    icon: 'img/items/zhijin/item-gu-coin.png',
+    short: '贪婪能量满后获得，组成世界的基本要素。',
+    detail: '使用贽金制作而成',
+    stats: [],
+    related: ['equip-pursestring-1', 'char-greed','item-pursestring-1','item-pursestring-2']
   },
   {
     id: 'build-mailbox',
