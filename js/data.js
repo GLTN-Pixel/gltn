@@ -761,7 +761,7 @@ const ENTRIES = [
     related: ['equip-pursestring-1', 'char-greed','item-pursestring-1','item-pursestring-2']
   },
   {
-    id: 'item-zhi-coin',
+    id: 'item-yue-coin',
     type: 'item',
     form: 'greed',
     name: '钺金',
@@ -769,7 +769,7 @@ const ENTRIES = [
     aliases: ['纸币'],
     searchTerms: ['yue coin'],
     icon: 'img/items/zhijin/item-yue-coin.png',
-    short: '贪婪能量满后获得，组成世界的基本要素。',
+    short: '使用贽金制作而成',
     detail: '使用贽金制作而成',
     stats: [],
     related: ['equip-pursestring-1', 'char-greed','item-pursestring-1','item-pursestring-2']
@@ -783,11 +783,12 @@ const ENTRIES = [
     aliases: ['纸币'],
     searchTerms: ['gu coin'],
     icon: 'img/items/zhijin/item-gu-coin.png',
-    short: '贪婪能量满后获得，组成世界的基本要素。',
+    short: '使用贽金制作而成',
     detail: '使用贽金制作而成',
     stats: [],
     related: ['equip-pursestring-1', 'char-greed','item-pursestring-1','item-pursestring-2']
   },
+  
   {
     id: 'build-mailbox',
     type: 'building',
